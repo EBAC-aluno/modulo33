@@ -36,6 +36,8 @@ public class Acessory {
   @Column(length = 255)
   private String description;
 
+  private Integer inventory;
+
   @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   @JoinTable(name = "tb_acessory_car", joinColumns = @JoinColumn(name = "id_acessory", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_car", referencedColumnName = "id"))
   private List<Car> cars;
@@ -86,6 +88,22 @@ public class Acessory {
 
   public void setCars(List<Car> cars) {
     this.cars = cars;
+  }
+
+  public Integer getInventory() {
+    return inventory;
+  }
+
+  public void setInventory(Integer inventory) {
+    this.inventory = inventory;
+  }
+
+  public Manufacturer getManufacturer() {
+    return manufacturer;
+  }
+
+  public void setManufacturer(Manufacturer manufacturer) {
+    this.manufacturer = manufacturer;
   }
 
 }

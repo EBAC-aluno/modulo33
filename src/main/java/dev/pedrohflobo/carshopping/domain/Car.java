@@ -35,21 +35,22 @@ public class Car {
   @Column(length = 4, nullable = false)
   private Integer manufactureYear;
 
-  @Column(nullable = false)
-  private Boolean isSalable;
-  
   @ManyToMany(mappedBy = "cars", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
   private List<Acessory> acessories = new ArrayList<Acessory>();
+
+  private Integer inventory;
 
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "fk_manufacturer")
   private Manufacturer manufacturer = new Manufacturer();
 
-  public Car(String model, Integer manufactureYear, Manufacturer manufacturer, Boolean isSalable) {
+  public Car() {
+  }
+ 
+  public Car(String model, Integer manufactureYear, Manufacturer manufacturer) {
     this.model = model;
     this.manufactureYear = manufactureYear;
     this.manufacturer = manufacturer;
-    this.isSalable = isSalable;
   }
   
   public void addAcessory(Acessory acessory){
@@ -94,6 +95,14 @@ public class Car {
 
   public void setManufacturer(Manufacturer manufacturer) {
     this.manufacturer = manufacturer;
+  }
+
+  public Integer getInventory() {
+    return inventory;
+  }
+
+  public void setInventory(Integer inventory) {
+    this.inventory = inventory;
   }
 
 }

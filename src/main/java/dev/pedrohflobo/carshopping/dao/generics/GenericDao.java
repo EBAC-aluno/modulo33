@@ -39,7 +39,7 @@ public abstract class GenericDao<T, K> implements IGenericDao<T, K> {
   @Override
   @SuppressWarnings("unchecked")
   public List<T> findAll() {
-    return entityManager.createQuery("Select c from " + persistentClass.getSimpleName() + " c").getResultList();
+    return entityManager.createQuery("SELECT c FROM " + persistentClass.getSimpleName() + " c").getResultList();
   }
 
   @Override
@@ -48,11 +48,6 @@ public abstract class GenericDao<T, K> implements IGenericDao<T, K> {
     if (entity == null) {
       throw new IdNotFoundException();
     }
-    executeInsideTransaction(entityManager -> entityManager.remove(entity));
-  }
-
-  @Override
-  public void deleteAll(T entity) throws CommitException{
     executeInsideTransaction(entityManager -> entityManager.remove(entity));
   }
 

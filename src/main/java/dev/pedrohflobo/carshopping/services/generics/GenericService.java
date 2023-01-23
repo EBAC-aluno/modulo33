@@ -4,6 +4,7 @@ import java.util.List;
 
 import dev.pedrohflobo.carshopping.dao.generics.GenericDao;
 import dev.pedrohflobo.carshopping.exception.CommitException;
+import dev.pedrohflobo.carshopping.exception.IdNotFoundException;
 import dev.pedrohflobo.carshopping.utils.JpaUtil;
 
 public class GenericService<T, K, D extends GenericDao<T, K>> implements IGenericService<T, K, D> {
@@ -31,7 +32,13 @@ public class GenericService<T, K, D extends GenericDao<T, K>> implements IGeneri
   }
 
   @Override
-  public void deleteAll(T entity) throws CommitException {
-    dao.deleteAll(entity); 
+  public void deleteById(K id) throws IdNotFoundException, CommitException{
+    dao.deleteById(id);
   }
+
+  @Override
+  public T findById(K id) throws IdNotFoundException {
+    return dao.findById(id);  
+  }
+
 }

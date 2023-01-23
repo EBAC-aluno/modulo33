@@ -16,5 +16,4 @@ public interface IGenericDao<T, K> {
 
   void deleteById(K id) throws IdNotFoundException, CommitException;
   
-  void deleteAll(T entity) throws CommitException;
 }
