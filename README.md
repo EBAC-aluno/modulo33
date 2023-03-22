@@ -32,6 +32,11 @@ In order to make this project work, you need to put the following content in the
 </persistence>
 ```
 Then, create MySQL username, password and database using the same properties names available in the `persistence.xml` file.
+Now, you need to download a jar file from gradle. Just use the following command:
+
+```bash
+gradle wrapper
+```
 
 To run this project, use the command below:
 
