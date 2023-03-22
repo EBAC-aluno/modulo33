@@ -18,7 +18,7 @@ In order to make this project work, you need to put the following content in the
               createDatabaseIfNotExist=true
               &amp;useTimezone=true
               &amp;serverTimezone=UTC" />
-            <property name="jakarta.persistence.jdbc.user" value="jpa_user_test"/>
+            <property name="jakarta.persistence.jdbc.user" value="jpa_user"/>
             <property name="jakarta.persistence.jdbc.password" value="secret"/>
             <property
                     name="jakarta.persistence.schema-generation.database.action"
